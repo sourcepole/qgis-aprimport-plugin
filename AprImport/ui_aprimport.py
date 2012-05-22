@@ -67,4 +67,7 @@ class AprImportDialog(QDialog, Ui_AprImport):
             print view.value('Name')
             print view.value('Theme')
             for th in aprreader.themes(view): 
-                print th            
+                try:
+                   print th.value('Source').value('Name').value('FileName').value('Path')
+                except:
+                  pass

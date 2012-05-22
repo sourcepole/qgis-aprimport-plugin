@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE Project SYSTEM "Project-4.6.dtd">
 <!-- eric4 project file for project AprImport -->
-<!-- Saved: 2012-05-22, 14:36:06 -->
+<!-- Saved: 2012-05-22, 16:38:39 -->
 <!-- Copyright (C) 2012 Dr. Horst Düster, horst.duester@sourcepole.ch -->
 <Project version="4.6">
   <Language>en</Language>
@@ -20,9 +20,10 @@
     <Source>aprlib/yapps/runtime.py</Source>
     <Source>aprlib/apr.py</Source>
     <Source>help/source/conf.py</Source>
-    <Source>aprimportdialog.py</Source>
     <Source>plugin_upload.py</Source>
     <Source>resources_rc.py</Source>
+    <Source>forms/Ui_ui_aprimport.py</Source>
+    <Source>ui_aprimport.py</Source>
   </Sources>
   <Forms>
     <Form>forms/ui_aprimport.ui</Form>
