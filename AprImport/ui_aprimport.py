@@ -65,9 +65,8 @@ class AprImportDialog(QDialog, Ui_AprImport):
         aprreader.parse()
         for view in aprreader.views():
             print view.value('Name')
-            print view.value('Theme')
-            for th in aprreader.themes(view): 
+            for theme in view.refs('Theme'):
                 try:
-                   print th.value('Source').value('Name').value('FileName').value('Path')
+                   print theme.ref('Source').ref('Name').ref('FileName').value('Path')
                 except:
                   pass

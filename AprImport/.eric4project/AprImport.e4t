@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE Tasks SYSTEM "Tasks-4.2.dtd">
 <!-- eric4 tasks file for project AprImport -->
-<!-- Saved: 2012-05-22, 16:38:39 -->
+<!-- Saved: 2012-05-22, 18:22:16 -->
 <Tasks version="4.2">
   <Task priority="1" completed="False" bugfix="False">
     <Summary>TODO: not implemented yet</Summary>
     <Description></Description>
-    <Created>2012-05-22, 16:38:24</Created>
+    <Created>2012-05-22, 18:19:27</Created>
     <Resource>
       <Filename>ui_aprimport.py</Filename>
       <Linenumber>29</Linenumber>
@@ -15,7 +15,7 @@
   <Task priority="1" completed="False" bugfix="False">
     <Summary>TODO: not implemented yet</Summary>
     <Description></Description>
-    <Created>2012-05-22, 16:38:24</Created>
+    <Created>2012-05-22, 18:19:27</Created>
     <Resource>
       <Filename>ui_aprimport.py</Filename>
       <Linenumber>43</Linenumber>
@@ -24,7 +24,7 @@
   <Task priority="1" completed="False" bugfix="False">
     <Summary>TODO: not implemented yet</Summary>
     <Description></Description>
-    <Created>2012-05-22, 16:38:24</Created>
+    <Created>2012-05-22, 18:19:27</Created>
     <Resource>
       <Filename>ui_aprimport.py</Filename>
       <Linenumber>51</Linenumber>
@@ -33,7 +33,7 @@
   <Task priority="1" completed="False" bugfix="False">
     <Summary>TODO: not implemented yet</Summary>
     <Description></Description>
-    <Created>2012-05-22, 16:38:24</Created>
+    <Created>2012-05-22, 18:19:27</Created>
     <Resource>
       <Filename>ui_aprimport.py</Filename>
       <Linenumber>59</Linenumber>
