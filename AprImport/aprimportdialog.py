@@ -21,7 +21,7 @@
 """
 
 from PyQt4 import QtCore, QtGui
-from ui_aprimport import Ui_AprImport
+from forms.Ui_ui_aprimport import Ui_AprImport
 # create the dialog for zoom to point
 class AprImportDialog(QtGui.QDialog):
     def __init__(self):

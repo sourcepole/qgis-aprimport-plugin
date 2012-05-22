@@ -54,7 +54,7 @@ class AprImport:
 
     def initGui(self):
         # Create action that will start plugin configuration
-        self.action = QAction(QIcon(":/plugins/aprimport/icon.png"), \
+        self.action = QAction(QIcon(":/plugins/aprimport/icons/icon.jpg"), \
             u"ArcView-APR-Import", self.iface.mainWindow())
         # connect the action to the run method
         QObject.connect(self.action, SIGNAL("triggered()"), self.run)

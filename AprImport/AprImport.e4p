@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Project SYSTEM "Project-4.6.dtd">
+<!-- eric4 project file for project AprImport -->
+<!-- Saved: 2012-05-22, 14:36:06 -->
+<!-- Copyright (C) 2012 Dr. Horst Düster, horst.duester@sourcepole.ch -->
+<Project version="4.6">
+  <Language>en</Language>
+  <ProgLanguage mixed="0">Python</ProgLanguage>
+  <ProjectType>Qt4</ProjectType>
+  <Description></Description>
+  <Version>0.1</Version>
+  <Author>Dr. Horst Düster</Author>
+  <Email>horst.duester@sourcepole.ch</Email>
+  <Sources>
+    <Source>aprimport.py</Source>
+    <Source>__init__.py</Source>
+    <Source>aprlib/__init__.py</Source>
+    <Source>aprlib/apr_parser.py</Source>
+    <Source>aprlib/yapps/__init__.py</Source>
+    <Source>aprlib/yapps/runtime.py</Source>
+    <Source>aprlib/apr.py</Source>
+    <Source>help/source/conf.py</Source>
+    <Source>aprimportdialog.py</Source>
+    <Source>plugin_upload.py</Source>
+    <Source>resources_rc.py</Source>
+  </Sources>
+  <Forms>
+    <Form>forms/ui_aprimport.ui</Form>
+  </Forms>
+  <Translations>
+  </Translations>
+  <Resources>
+    <Resource>resources.qrc</Resource>
+  </Resources>
+  <Interfaces>
+  </Interfaces>
+  <Others>
+  </Others>
+  <MainScript>aprimport.py</MainScript>
+  <Vcs>
+    <VcsType>None</VcsType>
+  </Vcs>
+  <FiletypeAssociations>
+    <FiletypeAssociation pattern="*.ui" type="FORMS" />
+    <FiletypeAssociation pattern="*.idl" type="INTERFACES" />
+    <FiletypeAssociation pattern="*.qm" type="TRANSLATIONS" />
+    <FiletypeAssociation pattern="*.ptl" type="SOURCES" />
+    <FiletypeAssociation pattern="*.pyw" type="SOURCES" />
+    <FiletypeAssociation pattern="*.ui.h" type="FORMS" />
+    <FiletypeAssociation pattern="*.ts" type="TRANSLATIONS" />
+    <FiletypeAssociation pattern="*.py" type="SOURCES" />
+    <FiletypeAssociation pattern="*.qrc" type="RESOURCES" />
+  </FiletypeAssociations>
+</Project>

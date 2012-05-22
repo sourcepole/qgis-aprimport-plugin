@@ -23,11 +23,11 @@
 def name():
     return "ArcView-APR Import"
 def description():
-    return "Imports Layer-Data from ArcView APR-"
+    return "Imports Layer-Data from ArcView APR"
 def version():
     return "Version 0.1"
 def icon():
-    return "icon.png"
+    return "icons/icon.jpg"
 def qgisMinimumVersion():
     return "1.0"
 def classFactory(iface):
