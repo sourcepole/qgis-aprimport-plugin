@@ -23,10 +23,11 @@
 from PyQt4.QtCore import *
 from PyQt4.QtGui import *
 from qgis.core import *
+from aprlib.apr import *
 # Initialize Qt resources from file resources.py
 import resources_rc
 # Import the code for the dialog
-from aprimportdialog import AprImportDialog
+from ui_aprimport import AprImportDialog
 
 class AprImport:
 
