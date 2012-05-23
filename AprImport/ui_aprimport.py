@@ -67,6 +67,7 @@ class AprImportDialog(QDialog, Ui_AprImport):
     def parseApr(self,  fileName=None):
         QApplication.setOverrideCursor(Qt.WaitCursor)
         aprFile = fileName
+<<<<<<< HEAD
         try:
             aprreader = Apr(aprFile)
             aprreader.parse()
@@ -92,3 +93,14 @@ class AprImportDialog(QDialog, Ui_AprImport):
             QMessageBox.information(None, 'Error',  'Error while reading APR-File')
             QApplication.restoreOverrideCursor()
                     
+=======
+        aprreader = Apr(aprFile)
+        aprreader.parse()
+        for view in aprreader.views():
+            print view.value('Name')
+            for theme in view.refs('Theme'):
+                try:
+                   print theme.ref('Source').ref('Name').ref('FileName').value('Path')
+                except:
+                  pass
+>>>>>>> e6bd9660720e9475a942bd8c0f4b5e2282b5a783
