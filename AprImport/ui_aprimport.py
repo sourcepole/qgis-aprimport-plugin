@@ -30,6 +30,7 @@ class AprImportDialog(QDialog, Ui_AprImport):
         Slot documentation goes here.
         """
         # TODO: not implemented yet
+        self.treeWidget.clear()
         settings = QSettings()
         mySettings = "ArcView-Import-Plugin"
         myDir = settings.value(mySettings+"/lastDirectory").toString()
@@ -61,23 +62,33 @@ class AprImportDialog(QDialog, Ui_AprImport):
         Slot documentation goes here.
         """
         # TODO: not implemented yet
-        pass
+        self.close()
         
     def parseApr(self,  fileName=None):
+        QApplication.setOverrideCursor(Qt.WaitCursor)
         aprFile = fileName
-        aprreader = Apr(aprFile)
-        aprreader.parse()
-        viewItem = QTreeWidgetItem(self.treeWidget)      
-        for view in aprreader.views():
-            print view.value('Name')
-            print view.value('Theme')
-            viewItem.setText(0, view.value('Name'))
-
-            layerItem = QTreeWidgetItem(viewItem)
-            for th in aprreader.themes(view): 
-                try:
-                   print '---'+th.value('Source').value('Name').value('FileName').value('Path')
-                   layerItem.setText(0,  th.value('Source').value('Name'))
-                   layerItem.setText(1,  th.value('Source').value('Name').value('FileName').value('Path'))
-                except:
-                  pass
+        try:
+            aprreader = Apr(aprFile)
+            aprreader.parse()
+            viewItem = QTreeWidgetItem(self.treeWidget)      
+            for view in aprreader.views():
+                print view.value('Name')
+                print view.value('Theme')
+                viewItem.setText(0, view.value('Name'))
+    
+                layerItem = QTreeWidgetItem(viewItem)
+                for th in aprreader.themes(view): 
+                    try:
+                        print '+++'+th.value('Name')
+                        print '---'+th.value('Source').value('Name').value('FileName').value('Path')
+                        layerItem.setText(0,  th.value('Name'))
+                        layerItem.setText(1,  th.value('Source').value('Name').value('FileName').value('Path'))
+                    except:
+                        QApplication.restoreOverrideCursor()
+                        pass
+                        
+                QApplication.restoreOverrideCursor()
+        except:
+            QMessageBox.information(None, 'Error',  'Error while reading APR-File')
+            QApplication.restoreOverrideCursor()
+                    
