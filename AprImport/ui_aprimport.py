@@ -95,6 +95,7 @@ class AprImportDialog(QDialog, Ui_AprImport):
             
     def  loadLayers(self):
         layerList = []
+        error = False
         for view in self.aprreader.views():
             itemList = self.treeWidget.selectedItems()
             if  view.value('Name')== itemList[0].text(0):
@@ -111,6 +112,7 @@ class AprImportDialog(QDialog, Ui_AprImport):
                         vLayer = QgsVectorLayer(fileName, layerName, "ogr")
                         if not vLayer.isValid():
                             print "Layer failed to load!"
+                            error = True
                         else:
                             layerList.append(vLayer)
                     elif themeType == 'GSrc':
@@ -119,6 +121,7 @@ class AprImportDialog(QDialog, Ui_AprImport):
                         rlayer = QgsRasterLayer(fileName, baseName)
                         if not rlayer.isValid():
                             print "Layer failed to load!"
+                            error = True
                         else:
                             layerList.append(vLayer)
                         
@@ -128,6 +131,8 @@ class AprImportDialog(QDialog, Ui_AprImport):
             QgsMapLayerRegistry.instance().addMapLayer(layer)             
             
                 
+        if error:
+            QMessageBox.information(None, 'Error', 'Es konnten nicht alle Layer geladen werden. Eine Liste der fehlerhaften Layer folgt in der nächsten Version')
 #                
                 
 
