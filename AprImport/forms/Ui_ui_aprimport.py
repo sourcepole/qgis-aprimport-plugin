@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file '/home/hdus/dev/qgis-aprimport-plugin/AprImport/forms/ui_aprimport.ui'
 #
-# Created: Tue May 22 15:01:06 2012
+# Created: Wed May 23 08:07:34 2012
 #      by: PyQt4 UI code generator 4.9.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -17,7 +17,7 @@ except AttributeError:
 class Ui_AprImport(object):
     def setupUi(self, AprImport):
         AprImport.setObjectName(_fromUtf8("AprImport"))
-        AprImport.resize(492, 374)
+        AprImport.resize(521, 375)
         self.gridLayout = QtGui.QGridLayout(AprImport)
         self.gridLayout.setObjectName(_fromUtf8("gridLayout"))
         self.horizontalLayout = QtGui.QHBoxLayout()
@@ -37,19 +37,16 @@ class Ui_AprImport(object):
         self.treeWidget.headerItem().setText(0, _fromUtf8("1"))
         self.gridLayout.addWidget(self.treeWidget, 1, 0, 1, 1)
         self.buttonBox = QtGui.QDialogButtonBox(AprImport)
-        self.buttonBox.setOrientation(QtCore.Qt.Horizontal)
         self.buttonBox.setStandardButtons(QtGui.QDialogButtonBox.Cancel|QtGui.QDialogButtonBox.Ok)
         self.buttonBox.setObjectName(_fromUtf8("buttonBox"))
         self.gridLayout.addWidget(self.buttonBox, 2, 0, 1, 1)
 
         self.retranslateUi(AprImport)
-        QtCore.QObject.connect(self.buttonBox, QtCore.SIGNAL(_fromUtf8("accepted()")), AprImport.accept)
-        QtCore.QObject.connect(self.buttonBox, QtCore.SIGNAL(_fromUtf8("rejected()")), AprImport.reject)
         QtCore.QMetaObject.connectSlotsByName(AprImport)
 
     def retranslateUi(self, AprImport):
         AprImport.setWindowTitle(QtGui.QApplication.translate("AprImport", "AprImport", None, QtGui.QApplication.UnicodeUTF8))
-        self.label.setText(QtGui.QApplication.translate("AprImport", "APR-Datei", None, QtGui.QApplication.UnicodeUTF8))
+        self.label.setText(QtGui.QApplication.translate("AprImport", "APR-File:", None, QtGui.QApplication.UnicodeUTF8))
         self.toolButton.setText(QtGui.QApplication.translate("AprImport", "...", None, QtGui.QApplication.UnicodeUTF8))
 
 
