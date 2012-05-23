@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from aprlib import apr
+from AprImport.aprlib import apr
 from sys import argv, stdin
 
 if len(argv) >= 2:
@@ -8,7 +8,14 @@ if len(argv) >= 2:
     aprreader = apr.Apr(aprfile)
     aprreader.parse()
     for view in aprreader.views():
-        print view.value('Name')
-        print view.value('Theme')
-        for th in aprreader.themes(view): print th
+#        print view.value('Name')
+#        print view.value('Theme')
+        for th in aprreader.themes(view): 
+#            try:
+                print th.value('Name')
+                print th
+#                print th.value('Source').value('Name').value('FileName').value('Path')
+##                print th.value('Source').value('Name').value('FileName').value('Path')
+#            except:
+#                pass
 else: print >>sys.stderr, 'Args: <filename>'

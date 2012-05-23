@@ -35,7 +35,7 @@ class AprImport:
         # Save reference to the QGIS interface
         self.iface = iface
         # Create the dialog and keep reference
-        self.dlg = AprImportDialog()
+        self.dlg = AprImportDialog(self.iface)
         # initialize plugin directory
         self.plugin_dir = QFileInfo(QgsApplication.qgisUserDbFilePath()).path() + "/python/plugins/aprimport"
         # initialize locale

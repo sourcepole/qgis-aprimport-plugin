@@ -6,6 +6,8 @@ Module implementing AprImport.
 
 from PyQt4.QtGui import *
 from PyQt4.QtCore import *
+from qgis.core import *
+from qgis.gui import *
 
 from forms.Ui_ui_aprimport import Ui_AprImport
 from aprlib.apr import Apr
@@ -14,12 +16,13 @@ class AprImportDialog(QDialog, Ui_AprImport):
     """
     Class documentation goes here.
     """
-    def __init__(self, parent = None):
+    def __init__(self, iface,  parent = None):
         """
         Constructor
         """
         QDialog.__init__(self, parent)
         self.setupUi(self)
+        self.iface = iface
         self.fileName = ''
         self.setWindowFlags(self.windowFlags() | Qt.WindowStaysOnTopHint)             
         
@@ -37,8 +40,10 @@ class AprImportDialog(QDialog, Ui_AprImport):
         self.fileName = QFileDialog.getOpenFileName(None, 'Open APR-File',myDir, 'ArcView-Project (*.apr)' )
         settings.setValue(mySettings+"/lastDirectory",  QFileInfo(self.fileName).dir().path())        
         self.lneAprFileName.setText(self.fileName)
+        
+        QApplication.setOverrideCursor(Qt.WaitCursor)        
         self.parseApr(self.fileName)
-
+        QApplication.restoreOverrideCursor()
         
     
     @pyqtSignature("QModelIndex")
@@ -54,7 +59,7 @@ class AprImportDialog(QDialog, Ui_AprImport):
         """
         Slot documentation goes here.
         """
-        pass
+        self.loadLayers()
     
     @pyqtSignature("")
     def on_buttonBox_rejected(self):
@@ -62,45 +67,67 @@ class AprImportDialog(QDialog, Ui_AprImport):
         Slot documentation goes here.
         """
         # TODO: not implemented yet
+        QApplication.restoreOverrideCursor()
         self.close()
         
     def parseApr(self,  fileName=None):
-        QApplication.setOverrideCursor(Qt.WaitCursor)
         aprFile = fileName
-<<<<<<< HEAD
         try:
-            aprreader = Apr(aprFile)
-            aprreader.parse()
-            viewItem = QTreeWidgetItem(self.treeWidget)      
-            for view in aprreader.views():
-                print view.value('Name')
-                print view.value('Theme')
+            self.aprreader = Apr(aprFile)
+            self.aprreader.parse()
+            for view in self.aprreader.views():
+                viewItem = QTreeWidgetItem(self.treeWidget)      
                 viewItem.setText(0, view.value('Name'))
-    
-                layerItem = QTreeWidgetItem(viewItem)
-                for th in aprreader.themes(view): 
+                self.treeWidget.addTopLevelItem(viewItem)
+                for th in self.aprreader.themes(view): 
                     try:
-                        print '+++'+th.value('Name')
-                        print '---'+th.value('Source').value('Name').value('FileName').value('Path')
+                        layerItem = QTreeWidgetItem(viewItem)
+                        viewItem.addChild(layerItem)
                         layerItem.setText(0,  th.value('Name'))
-                        layerItem.setText(1,  th.value('Source').value('Name').value('FileName').value('Path'))
+                        layerItem.setDisabled(True)
+                        layerItem.setTextColor(QColor(255, 0, 0, 127))
                     except:
-                        QApplication.restoreOverrideCursor()
                         pass
-                        
-                QApplication.restoreOverrideCursor()
         except:
             QMessageBox.information(None, 'Error',  'Error while reading APR-File')
-            QApplication.restoreOverrideCursor()
-                    
-=======
-        aprreader = Apr(aprFile)
-        aprreader.parse()
-        for view in aprreader.views():
-            print view.value('Name')
-            for theme in view.refs('Theme'):
-                try:
-                   print theme.ref('Source').ref('Name').ref('FileName').value('Path')
-                except:
-                  pass
->>>>>>> e6bd9660720e9475a942bd8c0f4b5e2282b5a783
+            
+            
+            
+    def  loadLayers(self):
+        layerList = []
+        for view in self.aprreader.views():
+            itemList = self.treeWidget.selectedItems()
+            if  view.value('Name')== itemList[0].text(0):
+                for theTheme in  self.aprreader.themes(view):
+                    print theTheme.value('Name')
+                    try:
+                        themeType =  theTheme.value('Source').value('Name').value('OwnerClass')
+                        fileName = theTheme.value('Source').value('Name').value('FileName').value('Path')
+                        layerName = theTheme.value('Name')                        
+                    except:
+                        themeType = None
+
+                    if themeType == 'ShpSrc':
+                        vLayer = QgsVectorLayer(fileName, layerName, "ogr")
+                        if not vLayer.isValid():
+                            print "Layer failed to load!"
+                        else:
+                            layerList.append(vLayer)
+                    elif themeType == 'GSrc':
+                        fileInfo = QFileInfo(fileName)
+                        baseName = fileInfo.baseName()
+                        rlayer = QgsRasterLayer(fileName, baseName)
+                        if not rlayer.isValid():
+                            print "Layer failed to load!"
+                        else:
+                            layerList.append(vLayer)
+                        
+        layerList.reverse()
+        
+        for layer in layerList:
+            QgsMapLayerRegistry.instance().addMapLayer(layer)             
+            
+                
+#                
+                
+

@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file '/home/hdus/dev/qgis-aprimport-plugin/AprImport/forms/ui_aprimport.ui'
+# Form implementation generated from reading ui file '/home/hdus/dev/qgis/aprimport-plugin/AprImport/forms/ui_aprimport.ui'
 #
-# Created: Wed May 23 08:07:34 2012
+# Created: Wed May 23 13:00:49 2012
 #      by: PyQt4 UI code generator 4.9.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -35,6 +35,7 @@ class Ui_AprImport(object):
         self.treeWidget = QtGui.QTreeWidget(AprImport)
         self.treeWidget.setObjectName(_fromUtf8("treeWidget"))
         self.treeWidget.headerItem().setText(0, _fromUtf8("1"))
+        self.treeWidget.header().setVisible(False)
         self.gridLayout.addWidget(self.treeWidget, 1, 0, 1, 1)
         self.buttonBox = QtGui.QDialogButtonBox(AprImport)
         self.buttonBox.setStandardButtons(QtGui.QDialogButtonBox.Cancel|QtGui.QDialogButtonBox.Ok)
