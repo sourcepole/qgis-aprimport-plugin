@@ -79,7 +79,7 @@ class AprImportDialog(QDialog, Ui_AprImport):
                 viewItem = QTreeWidgetItem(self.treeWidget)      
                 viewItem.setText(0, view.value('Name'))
                 self.treeWidget.addTopLevelItem(viewItem)
-                for th in self.aprreader.themes(view): 
+                for th in view.refs('Theme'):
                     try:
                         layerItem = QTreeWidgetItem(viewItem)
                         viewItem.addChild(layerItem)
@@ -99,11 +99,11 @@ class AprImportDialog(QDialog, Ui_AprImport):
         for view in self.aprreader.views():
             itemList = self.treeWidget.selectedItems()
             if  view.value('Name')== itemList[0].text(0):
-                for theTheme in  self.aprreader.themes(view):
+                for theTheme in view.refs('Theme'):
                     print theTheme.value('Name')
                     try:
-                        themeType =  theTheme.value('Source').value('Name').value('OwnerClass')
-                        fileName = theTheme.value('Source').value('Name').value('FileName').value('Path')
+                        themeType =  theTheme.ref('Source').ref('Name').value('OwnerClass')
+                        fileName = theTheme.ref('Source').ref('Name').ref('FileName').value('Path')
                         layerName = theTheme.value('Name')                        
                     except:
                         themeType = None
